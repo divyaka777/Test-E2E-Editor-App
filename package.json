@@ -1,0 +1,25 @@
+{
+  "name": "test-e2e-editor-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divyaka777/Test-E2E-Editor-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divyaka777/Test-E2E-Editor-App/issues"
+  },
+  "homepage": "https://github.com/divyaka777/Test-E2E-Editor-App#readme",
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "cypress": "^13.12.0",
+    "typescript": "^5.5.2"
+  }
+}
