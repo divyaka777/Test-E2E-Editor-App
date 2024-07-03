@@ -17,6 +17,13 @@ describe('Image Element Test', () => {
       imageGalleryPage.getImageElement().should('be.visible');
 
     })
+
+    it('should be able to dowload the image', () => {
+        //Check if the image is visible and downloadable
+        imageGalleryPage.getImageElement().should('be.visible').click({multiple:true});
+        imageGalleryPage.getDownloadImageElement().should('be.visible').click();
+
+    })
     
   
     it('should have the correct src attribute', () => {
