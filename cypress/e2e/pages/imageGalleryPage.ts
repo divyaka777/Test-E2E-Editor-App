@@ -7,8 +7,9 @@ class ImageGalleryPage
     getHomeText() {
         return cy.contains('Home')
       }
-    getImageElement() {
-        return cy.get('img[alt="Image by Alejandro Escamilla"]')
+    getImageElement(index = 0) {
+        
+        return cy.get('img').eq(index)
       }
     getWidthInput() {
         return cy.get('#width-input')
@@ -16,12 +17,16 @@ class ImageGalleryPage
     getHeightInput() {
         return cy.get('#height-input')
       }
+    getGreyScale()
+      {
+        return cy.get ('[id="greyscale-input"]')
+      }
     getDownloadImageElement() {
-        return cy.contains('font', 'Download Image')
+        return cy.get('[aria-label="Download edited image"]')
       }
 
     getDiscardChangesElement() {
-        return cy.contains('font', 'Discard Changes')
+        return cy.get('[aria-label="Discard changes to the image"]')
       }
     
     
