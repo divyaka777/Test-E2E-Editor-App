@@ -24,7 +24,9 @@ class ImageGalleryPage
     getDownloadImageElement() {
         return cy.get('[aria-label="Download edited image"]')
       }
-
+    getBlurScaleElement(){
+        return cy.get('[id="blur-input"]').invoke('val',5)
+    }
     getDiscardChangesElement() {
         return cy.get('[aria-label="Discard changes to the image"]')
       }

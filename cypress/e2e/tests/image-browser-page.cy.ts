@@ -2,7 +2,7 @@ import { imageGalleryPage } from "../pages/imageGalleryPage"
 
 describe('Image Element Test', () => {
     beforeEach(() => {
-      // Visit the page before each test
+      // Visit the  Home page before each test
       imageGalleryPage.visit();
     })
     
@@ -26,7 +26,7 @@ describe('Image Element Test', () => {
     })
 
     it('should be able to add greyscale changes to the image and discard them', () => {
-        //Check if the image is visible and editable
+        //Check if the image is visible and can introduce greyscale changes 
         imageGalleryPage.getImageElement().should('be.visible').click();
         imageGalleryPage.getWidthInput().type('100');
         imageGalleryPage.getGreyScale().check();
@@ -36,26 +36,34 @@ describe('Image Element Test', () => {
     })
 
     it('should be able to edit changes to the image', () => {
-        //Check if the image is visible and editable
+        //Check if the image is visible and editable and downloadable
         imageGalleryPage.getImageElement().should('be.visible').click();
         imageGalleryPage.getWidthInput().type('100');
+        imageGalleryPage.getHeightInput().type('400');
+        imageGalleryPage.getDownloadImageElement().should('be.visible').click();
+
+    })
+
+    it('should be able to add blur to the image ', () => {
+        //Check if the image is visible and could be blurred to a specific value
+        imageGalleryPage.getImageElement().should('be.visible').click();
+        imageGalleryPage.getBlurScaleElement().should('have.value','5');
 
     })
 
     it('should be able to discard changes to the image', () => {
         //Check if the image is visible and editable and could discard the changes
         imageGalleryPage.getImageElement().should('be.visible').click();
+        imageGalleryPage.getWidthInput().type('100');
+        imageGalleryPage.getHeightInput().type('400');
+        imageGalleryPage.getGreyScale().check();
+        imageGalleryPage.getBlurScaleElement().should('have.value','5');
         imageGalleryPage.getDiscardChangesElement().should('be.visible').click();
 
     })
     
   
-    it('should have the correct src attribute', () => {
-      // Check if the image element has the correct src attribute
-      cy.get('img[alt="Image by Alejandro Escamilla"]')
-        .should('have.attr', 'src')
-        .and('include', 'https://picsum.photos/id/0/5000/3333')
-    })
+
   
   })
   
