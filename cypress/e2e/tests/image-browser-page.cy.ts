@@ -63,7 +63,7 @@ describe('Image Element Test', () => {
 
     })
 
-    it.only('C13 should navigate back to home screen' , () => {
+    it('C13 should navigate back to home screen' , () => {
       // User should be able to navigate back to home screen
       imageGalleryPage.getImageElement().should('be.visible').click();
       imageEditorPage.getNavigationHome().click();
