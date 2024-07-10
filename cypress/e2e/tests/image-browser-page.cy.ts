@@ -7,26 +7,26 @@ describe('Image Element Test', () => {
       imageGalleryPage.visit();
     })
     
-    it('should display the home page', () => {
+    it('C1 should display the home page', () => {
         // Check if the homepage is loaded
         imageGalleryPage.getHomeText().should('be.visible');
       })
 
   
-    it('should load the image element', () => {
+    it('C2 should load the image element', () => {
       // Check if the image element is present and visible
       imageGalleryPage.getImageElement().should('be.visible');
 
     })
 
-    it('should be able to dowload the image', () => {
+    it('C3 should be able to dowload the image', () => {
         //Check if the image is visible and downloadable
         imageGalleryPage.getImageElement().should('be.visible').click();
         imageEditorPage.getDownloadImageElement().should('be.visible').dblclick();
 
     })
 
-    it('should be able to add greyscale changes to the image and discard them', () => {
+    it('C4 should be able to add greyscale changes to the image and discard them', () => {
         //Check if the image is visible and can introduce greyscale changes 
         imageGalleryPage.getImageElement().should('be.visible').click();
         imageEditorPage.getWidthInput().type('100');
@@ -36,7 +36,7 @@ describe('Image Element Test', () => {
 
     })
 
-    it('should be able to edit changes to the image', () => {
+    it('C5 should be able to edit changes to the image', () => {
         //Check if the image is visible and editable and downloadable
         imageGalleryPage.getImageElement().should('be.visible').click();
         imageEditorPage.getWidthInput().clear().type('100');
@@ -45,14 +45,14 @@ describe('Image Element Test', () => {
 
     })
 
-    it('should be able to add blur to the image ', () => {
+    it('C6 should be able to add blur to the image ', () => {
         //Check if the image is visible and could be blurred to a specific value
         imageGalleryPage.getImageElement().should('be.visible').click();
         imageEditorPage.getBlurScaleElement().should('have.value','5');
 
     })
 
-    it('should be able to discard changes to the image', () => {
+    it('C7 should be able to discard changes to the image', () => {
         //Check if the image is visible and editable and could discard the changes
         imageGalleryPage.getImageElement().should('be.visible').click();
         imageEditorPage.getWidthInput().type('100');
@@ -60,6 +60,13 @@ describe('Image Element Test', () => {
         imageEditorPage.getGreyScale().check();
         imageEditorPage.getBlurScaleElement().should('have.value','5');
         imageEditorPage.getDiscardChangesElement().should('be.visible').click();
+
+    })
+
+    it.only('C13 should navigate back to home screen' , () => {
+      // User should be able to navigate back to home screen
+      imageGalleryPage.getImageElement().should('be.visible').click();
+      imageEditorPage.getNavigationHome().click();
 
     })
     

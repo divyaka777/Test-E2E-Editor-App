@@ -10,7 +10,7 @@ describe('Pagination Tests', () => {
   });
 
   pageSizes.forEach(size => {
-    it(`should paginate with ${size} items per page`, () => {
+    it(`C12 should paginate with ${size} items per page`, () => {
       // Check whether the user can select different pagination values
       paginationPage.selectPageSize(size);
 

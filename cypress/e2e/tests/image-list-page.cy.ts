@@ -8,28 +8,22 @@ describe('Image Element Test', () => {
       
     })
 
-    it('User should navigate to the next page', () => {
+    it('C8 User should navigate to the next page', () => {
         // Check if the user is navigated to the next page
         imageGalleryPage.getNextPage().click({multiple:true});
       })
 
-      it('User should navigate to the previous page', () => {
+      it('C9 User should navigate to the previous page', () => {
         // Check if the user is navigated to the previous page
         imageGalleryPage.getNextPage().click({multiple:true});
         imageGalleryPage.getPreviousPage().click({multiple:true});
       })
 
-      it('Check whether the Previous Page is disabled', () => {
+      it('C10 Check whether the Previous Page is disabled', () => {
         // Check whether the Previous Page button is disabled
         imageGalleryPage.getPreviousPage().should('be.disabled');
-      })
-      it(`should paginate with items per page`, () => {
-                  // Select the page size from the dropdown
-        cy.get('select').eq(1).select('50');
-      })
+      })      
             
-                 
-
-
+                
 
 })

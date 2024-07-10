@@ -19,6 +19,9 @@ class ImageEditorPage
     getDiscardChangesElement() {
         return cy.get('[aria-label="Discard changes to the image"]')
       }
+    getNavigationHome() {
+        return cy.get('a[href="/"]')
+    }
 }
 
 export  const imageEditorPage = new ImageEditorPage;
