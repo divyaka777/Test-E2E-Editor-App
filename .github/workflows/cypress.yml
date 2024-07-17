@@ -1,52 +1,29 @@
-name: E2E Tests
+name: Run Cypress Tests
 
 on:
-  push:
-    branches:
-      - '**'
-  pull_request:
-    branches:
-      - '**'
+  repository_dispatch:
+    types: [run-tests]
 
 jobs:
-  e2e-tests:
+  cypress-tests:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Install Cypress and dependencies
+        uses: cypress-io/github-action@v6
         with:
-          node-version: '16'  # Use the Node.js version required by your project
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Start the application
-        run: npm start &
-        env:
-          CI: true
-
-      - name: Wait for the application to be ready
-        run: npx wait-on http://localhost:5173/ 
+          build: npm run build  # Optional build command
+          start: npm start  # Optional start command
+          wait-on: 'http://localhost:5173/'  # Adjust as per your application's URL
+          wait-on-timeout: '240'  # Optional wait timeout
 
       - name: Run Cypress tests
-        run: npm run cypress:run
-        env:
-          CI: true
-
-      - name: Archive Cypress videos and screenshots
-        if: always()
-        uses: actions/upload-artifact@v2
+        uses: cypress-io/github-action@v6
         with:
-          name: cypress-videos
-          path: cypress/videos
-
-      - name: Archive Cypress screenshots
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
+          command: 'run'
+          record: true  # Optional: Record test results in the Cypress Dashboard
+          parallel: true  # Optional: Run tests in parallel
+          group: 'Production'  # Optional: Specify test group in Cypress Dashboard
