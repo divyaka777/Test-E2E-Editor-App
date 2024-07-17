@@ -1,0 +1,52 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Use the Node.js version required by your project
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start the application
+        run: npm start &
+        env:
+          CI: true
+
+      - name: Wait for the application to be ready
+        run: npx wait-on http://localhost:5173/ 
+
+      - name: Run Cypress tests
+        run: npm run cypress:run
+        env:
+          CI: true
+
+      - name: Archive Cypress videos and screenshots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+      - name: Archive Cypress screenshots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
