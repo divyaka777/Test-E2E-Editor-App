@@ -7,10 +7,12 @@ This is a photo editor app that allows users to view, edit, and download images.
 ### Set up
 
 Install the dependencies using [NPM](https://www.npmjs.com/)
+Start the development server: pnpm dev
 
 ```bash
 npm install
 ```
+
 
 ### Add environment variables
 
