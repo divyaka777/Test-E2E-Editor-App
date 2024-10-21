@@ -1,5 +1,8 @@
 # Test-E2E-Editor-App
 
+Description:
+
+This is a photo editor app that allows users to view, edit, and download images.
 
 ### Set up
 
